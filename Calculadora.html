@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Calculadora avanzada de potencia para telecomunicaciones">
+<title>Calculadora de Potencia | Herramienta para Telecomunicaciones</title>
+<link rel="stylesheet" href="Styles/Cal.css">
+</head>
+<body>
+<header>
+<h1>Calculadora de Potencia</h1>
+</header>
+<main class="main-container">
+<div class="contenedor">
+    <a href="index.html" class="btn10" id="btnMenu">
+    <span>Menú Principal</span>
+    <div class="transition"></div>
+    </a>
+
+    <section class="card-section">
+    <h2>Potencia Inicial</h2>
+    
+    <div class="form-grid">
+        <div class="input-group">
+        <label for="potencia">Ingrese la potencia:</label>
+        <input type="number" id="potencia" placeholder="Ejemplo: 10" aria-describedby="explicacionPotencia" oninput="mostrarExplicacion()">
+        <p id="explicacionPotencia" class="explicacion oculto" aria-live="polite"></p>
+        </div>
+        
+        <div class="input-group">
+        <label for="unidad">Seleccione la unidad:</label>
+        <select id="unidad" onchange="mostrarExplicacion()">
+        <option value="dBm">dBm</option>
+        <option value="mW">mW</option>
+        </select>
+        </div>
+    </div>
+    
+    <button type="button" onclick="convertirPotencia()" class="btn10">Convertir</button>
+    
+    <div class="result-card oculto" id="potenciaConvertida" aria-live="polite"></div>
+    </section>
+
+    <section class="card-section">
+    <h2>Ganancias / Pérdidas</h2>
+    
+    <div class="form-grid">
+        <div class="input-group">
+        <label for="cantidadCambios">Cantidad de ganancias/pérdidas:</label>
+        <input type="number" id="cantidadCambios" min="1" placeholder="Ejemplo: 3">
+        </div>
+    </div>
+    
+    <button type="button" onclick="generarCampos()" class="btn10">Generar Campos</button>
+    
+    <div id="contenedorCambios" class="dynamic-fields"></div>
+    
+    <div class="button-group">
+        <button type="button" onclick="calcularPotenciaFinal()" class="btn10">Calcular Potencia Final</button>
+        <button type="button" onclick="reiniciarCalculadora()" class="btndanger">Reiniciar</button>
+    </div>
+    
+    <div class="result-card oculto" id="potenciaFinal" aria-live="polite"></div>
+    </section>
+
+    <section class="card-section">
+    <h2>Gráficos de Potencia</h2>
+    <div class="chart-wrapper">
+        <canvas id="graficoPotencia_dBm" aria-label="Gráfico de potencia en dBm"></canvas>
+    </div>
+    <div class="chart-wrapper">
+        <canvas id="graficoPotencia_mW" aria-label="Gráfico de potencia en mW"></canvas>
+    </div>
+    </section>
+
+    <section class="procedure-section">
+    <h2>Procedimiento de Cálculo</h2>
+    
+    <div class="procedure-step">
+        <h3>1. Conversión entre dBm y mW</h3>
+        <p>Para convertir entre dBm y milivatios (mW) utilizamos las siguientes fórmulas:</p>
+        
+        <div class="procedure-formula">
+        <strong>De dBm a mW:</strong> mW = 10<sup>(dBm/10)</sup>
+        </div>
+        
+        <div class="procedure-formula">
+        <strong>De mW a dBm:</strong> dBm = 10 × log<sub>10</sub>(mW)
+        </div>
+        
+        <p>Ejemplo: 20 dBm = 10<sup>(20/10)</sup> = 100 mW</p>
+    </div>
+    
+    <div class="procedure-step">
+        <h3>2. Cálculo de potencia final</h3>
+        <p>Para calcular la potencia final considerando ganancias y pérdidas:</p>
+        
+        <div class="procedure-formula">
+        <strong>En dBm:</strong> P<sub>final</sub> = P<sub>inicial</sub> + ΣGanancias - ΣPérdidas
+        </div>
+        
+        <div class="procedure-formula">
+        <strong>En mW:</strong> P<sub>final</sub> = P<sub>inicial</sub> × (ΠGanancias) / (ΠPérdidas)
+        </div>
+        
+        <p>Donde las ganancias y pérdidas deben estar en la misma unidad que la potencia inicial.</p>
+    </div>
+    
+    <div class="procedure-step">
+        <h3>3. Consideraciones importantes</h3>
+        <ul>
+        <li>Las ganancias se ingresan como valores positivos</li>
+        <li>Las pérdidas se ingresan como valores negativos</li>
+        <li>Para cálculos en dBm, simplemente sumamos/restamos los valores</li>
+        <li>Para cálculos en mW, debemos convertir ganancias/pérdidas a factores multiplicativos</li>
+        </ul>
+    </div>
+    
+    <div class="procedure-note">
+        <p><strong>Nota:</strong> Esta calculadora realiza automáticamente todas las conversiones necesarias entre unidades.</p>
+    </div>
+    </section>
+
+    <div style="margin-top: 2rem;">
+    <a href="Telecomunicacion.html" class="btn10">
+    <span>Ir al módulo de telecomunicaciones</span>
+    <div class="transition"></div>
+    </a>
+</div>
+</main>
+
+<script src="Scripts/Cal_uso.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+</body>
+<footer style="text-align: center; padding: 1rem; margin-top: 2rem;">
+<p>© 2025 Proyecto de Comunicación de Datos</p>
+<p>Liseth Gomez & Yedrik Icabuco</p>
+</footer>
+</html>

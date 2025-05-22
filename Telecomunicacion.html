@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo de Telecomunicaciones</title>
+  <link rel="stylesheet" href="Styles/Telecomunicacion.css">
+</head>
+<body>
+  <header>
+    <h1>Módulo de Telecomunicaciones</h1>
+  </header>
+
+  <main class="main-container">
+    <div class="contenedor">
+
+<a href="index.html" class="btn10" id="btnMenu">
+  <span>Menú Principal</span>
+  <div class="transition"></div>
+</a>
+
+      <section class="card-section">
+        <h2>Conversión de Potencia</h2>
+        <div class="form-grid">
+          <div class="input-group">
+            <label for="valorEntrada">Valor a convertir:</label>
+            <input type="number" id="valorEntrada" placeholder="Ejemplo: 20" step="0.01">
+          </div>
+          <div class="input-group">
+            <label for="tipoConversion">Tipo de conversión:</label>
+            <select id="tipoConversion">
+              <option value="dbm_watts">dBm → Watts</option>
+              <option value="watts_dbm">Watts → dBm</option>
+              <option value="db_ratio">dB → Ratio</option>
+              <option value="ratio_db">Ratio → dB</option>
+            </select>
+          </div>
+        </div>
+        <button onclick="realizarConversion()" class="btn10">Convertir</button>
+        <div class="result-card" id="resultadoConversion"></div>
+
+        <div class="procedure-section">
+          <h3 class="procedure-title">Procedimiento de Conversión</h3>
+          
+          <div class="procedure-step">
+            <h4>dBm a Watts:</h4>
+            <div class="procedure-formula">
+              P(W) = 10<sup>(P(dBm)/10)</sup> / 1000
+            </div>
+            <p>Donde P(dBm) es la potencia en dBm</p>
+          </div>
+          
+          <div class="procedure-step">
+            <h4>Watts a dBm:</h4>
+            <div class="procedure-formula">
+              P(dBm) = 10 × log<sub>10</sub>(P(W) × 1000)
+            </div>
+            <p>Donde P(W) es la potencia en Watts</p>
+          </div>
+          
+          <div class="procedure-step">
+            <h4>dB a Ratio:</h4>
+            <div class="procedure-formula">
+              Ratio = 10<sup>(dB/10)</sup>
+            </div>
+          </div>
+          
+          <div class="procedure-step">
+            <h4>Ratio a dB:</h4>
+            <div class="procedure-formula">
+              dB = 10 × log<sub>10</sub>(Ratio)
+            </div>
+          </div>
+          
+          <div class="procedure-note">
+            <strong>Nota:</strong> dBm es una medida de potencia absoluta, mientras que dB es una medida relativa.
+          </div>
+        </div>
+      </section>
+
+      <section class="card-section">
+        <h2>Radioenlace</h2>
+        <div class="form-grid">
+          <div class="input-group">
+            <label for="frecuencia">Frecuencia (MHz):</label>
+            <input type="number" id="frecuencia" placeholder="Ejemplo: 2400" min="0" step="0.1">
+          </div>
+          <div class="input-group">
+            <label for="distancia">Distancia (km):</label>
+            <input type="number" id="distancia" placeholder="Ejemplo: 5" min="0" step="0.1">
+          </div>
+        </div>
+        <button onclick="calcularPerdidaEspacioLibre()" class="btn10">Calcular pérdida</button>
+        <div class="result-card" id="resultadoEnlace"></div>
+
+        <div class="procedure-section">
+          <h3 class="procedure-title">Pérdida en Espacio Libre (FSPL)</h3>
+          
+          <div class="procedure-step">
+            <h4>Fórmula:</h4>
+            <div class="procedure-formula">
+              FSPL(dB) = 20 × log<sub>10</sub>(d) + 20 × log<sub>10</sub>(f) + 32.45
+            </div>
+            <p>Donde:</p>
+            <ul>
+              <li>d = distancia en kilómetros</li>
+              <li>f = frecuencia en MHz</li>
+              <li>32.45 es una constante que considera la velocidad de la luz</li>
+            </ul>
+          </div>
+          
+          <div class="procedure-step">
+            <h4>Ejemplo:</h4>
+            <p>Para una frecuencia de 2400 MHz (Wi-Fi) y 1 km de distancia:</p>
+            <div class="procedure-formula">
+              FSPL = 20 × log(1) + 20 × log(2400) + 32.45 ≈ 100 dB
+            </div>
+          </div>
+          
+          <div class="procedure-note">
+            <strong>Nota:</strong> Esta fórmula asume propagación en espacio libre sin obstáculos.
+          </div>
+        </div>
+      </section>
+
+      <section class="card-section">
+        <h2>Modulación AM y FM</h2>
+        
+        <div class="form-grid">
+          <div class="input-group">
+            <h3>Modulación AM</h3>
+            <label for="am_carrier">Amplitud portadora:</label>
+            <input type="number" id="am_carrier" placeholder="Ejemplo: 10" min="0" step="0.01">
+            <label for="am_mensaje">Amplitud mensaje:</label>
+            <input type="number" id="am_mensaje" placeholder="Ejemplo: 5" min="0" step="0.01">
+            <button onclick="calcularAM()" class="btn10">Calcular AM</button>
+            <div class="result-card" id="resultadoAM"></div>
+          </div>
+          
+          <div class="input-group">
+            <h3>Modulación FM</h3>
+            <label for="fm_desviacion">Desviación frecuencia (Hz):</label>
+            <input type="number" id="fm_desviacion" placeholder="Ejemplo: 5000" min="0">
+            <label for="fm_mensaje">Ancho de banda mensaje (Hz):</label>
+            <input type="number" id="fm_mensaje" placeholder="Ejemplo: 3000" min="0">
+            <button onclick="calcularFM()" class="btn10">Calcular FM</button>
+            <div class="result-card" id="resultadoFM"></div>
+          </div>
+        </div>
+
+        <div class="procedure-section">
+          <h3 class="procedure-title">Procedimientos de Modulación</h3>
+          
+          <div class="procedure-step">
+            <h4>Modulación AM (Amplitud Modulada):</h4>
+            <div class="procedure-formula">
+              Índice de modulación (m) = A<sub>m</sub> / A<sub>c</sub>
+            </div>
+            <p>Donde:</p>
+            <ul>
+              <li>A<sub>m</sub> = Amplitud de la señal moduladora</li>
+              <li>A<sub>c</sub> = Amplitud de la portadora</li>
+            </ul>
+            <p>El índice debe estar entre 0 y 1 para evitar sobremodulación</p>
+          </div>
+          
+          <div class="procedure-step">
+            <h4>Modulación FM (Frecuencia Modulada):</h4>
+            <div class="procedure-formula">
+              Índice de modulación (β) = Δf / f<sub>m</sub>
+            </div>
+            <p>Donde:</p>
+            <ul>
+              <li>Δf = Desviación máxima de frecuencia</li>
+              <li>f<sub>m</sub> = Frecuencia de la señal moduladora</li>
+            </ul>
+            <div class="procedure-formula">
+              Ancho de banda ≈ 2 × (Δf + f<sub>m</sub>) (Regla de Carson)
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card-section">
+        <h2>Velocidad de Transmisión</h2>
+        <div class="form-grid">
+          <div class="input-group">
+            <label for="anchoBanda">Ancho de banda (Hz):</label>
+            <input type="number" id="anchoBanda" placeholder="Ejemplo: 4000" min="0">
+          </div>
+          <div class="input-group">
+            <label for="snr">SNR (dB):</label>
+            <input type="number" id="snr" placeholder="Ejemplo: 30" min="0" step="0.1">
+          </div>
+        </div>
+        <button onclick="calcularBitRate()" class="btn10">Calcular Bit Rate</button>
+        <div class="result-card" id="resultadoBitRate"></div>
+
+        <div class="procedure-section">
+          <h3 class="procedure-title">Capacidad del Canal (Shannon-Hartley)</h3>
+          
+          <div class="procedure-step">
+            <h4>Fórmula:</h4>
+            <div class="procedure-formula">
+              C = B × log<sub>2</sub>(1 + SNR)
+            </div>
+            <p>Donde:</p>
+            <ul>
+              <li>C = Capacidad del canal (bits/segundo)</li>
+              <li>B = Ancho de banda del canal (Hz)</li>
+              <li>SNR = Relación señal-ruido (adimensional)</li>
+            </ul>
+          </div>
+          
+          <div class="procedure-step">
+            <h4>Conversión de SNR en dB a lineal:</h4>
+            <div class="procedure-formula">
+              SNR<sub>lineal</sub> = 10<sup>(SNR<sub>dB</sub>/10)</sup>
+            </div>
+          </div>
+          
+          <div class="procedure-note">
+            <strong>Nota:</strong> Esta fórmula proporciona el límite teórico máximo de tasa de bits para un canal con ruido.
+          </div>
+        </div>
+      </section>
+
+      <section class="card-section">
+        <h2>Comunicaciones Digitales</h2>
+        <div class="form-grid">
+          <div class="input-group">
+            <label for="ordenModulacion">Orden modulación:</label>
+            <input type="number" id="ordenModulacion" placeholder="Ejemplo: 16 (para 16-QAM)" min="2">
+          </div>
+          <div class="input-group">
+            <label for="bitrate">Bitrate (bps):</label>
+            <input type="number" id="bitrate" placeholder="Ejemplo: 1000000" min="0">
+          </div>
+        </div>
+        <button onclick="calcularSymbolRate()" class="btn10">Calcular Symbol Rate</button>
+        <div class="result-card" id="resultadoSymbolRate"></div>
+
+        <div class="procedure-section">
+          <h3 class="procedure-title">Tasa de Símbolos en Modulación Digital</h3>
+          
+          <div class="procedure-step">
+            <h4>Fórmula:</h4>
+            <div class="procedure-formula">
+              Symbol Rate = Bit Rate / log<sub>2</sub>(M)
+            </div>
+            <p>Donde:</p>
+            <ul>
+              <li>M = Orden de modulación (número de símbolos)</li>
+              <li>Bit Rate = Tasa de bits (bps)</li>
+            </ul>
+          </div>
+          
+          <div class="procedure-step">
+            <h4>Ejemplos comunes:</h4>
+            <ul>
+              <li>QPSK (M=4): log<sub>2</sub>(4) = 2 bits/símbolo</li>
+              <li>16-QAM (M=16): log<sub>2</sub>(16) = 4 bits/símbolo</li>
+              <li>64-QAM (M=64): log<sub>2</sub>(64) = 6 bits/símbolo</li>
+            </ul>
+          </div>
+          
+          <div class="procedure-note">
+            <strong>Nota:</strong> Mayor orden de modulación permite mayor tasa de bits en el mismo ancho de banda, pero requiere mejor SNR.
+          </div>
+        </div>
+      </section>
+  <a href="Modulacion-ASK-FSK.html" class="btn10">
+    <span>Ir a Gráficas ASK y FSK</span>
+    <div class="transition"></div>
+  </a>
+      </div>
+  </main>
+
+  <script src="Script/Telecomunicacion.js"></script>
+</body>
+  <footer style="text-align: center; padding: 1rem; margin-top: 2rem;">
+    <p>© 2025 Proyecto de Comunicación de Datos</p>
+    <p>Liseth Gomez & Yedrik Icabuco</p>
+  </footer>
+</html>

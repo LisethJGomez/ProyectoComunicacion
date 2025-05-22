@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Presupuesto de enlace</title>
+  <link rel="stylesheet" href="Styles/Mapa.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body>
+  <header class="header">
+    <h1>Presupuesto de Enlace</h1>
+  </header>
+
+<a href="index.html" class="btn10" id="btnMenu">
+  <span>Menú Principal</span>
+  <div class="transition"></div>
+</a>
+<br>
+<br>
+<br>
+
+  <div class="control-panel">
+    <h3>Instrucciones:</h3>
+    <p>1. Haz clic en el mapa para colocar la primera antena</p>
+    <p>2. Haz clic para colocar la segunda antena</p>
+    <p>3. La distancia se calculará automáticamente</p>
+
+    <div class="distance-info" id="distanceInfo">Distancia: 0 km</div>
+<a href="#0" class="btn10" id="resetBtn">
+  <span>Reiniciar</span>
+  <div class="transition"></div>
+</a>
+  </div>
+  <br>
+
+  <div id="map"></div>
+
+  <div class="link-budget-info" id="linkBudgetInfo">
+    <h3>Presupuesto de Enlace</h3>
+    <div id="explicacion">
+      El presupuesto de enlace es el cálculo que nos permite saber si una señal llegará con suficiente potencia desde una antena transmisora hasta una receptora. Se calcula así:<br><br>
+      <code>
+        Potencia recibida = Potencia transmitida + Ganancias - Pérdidas
+      </code><br><br>
+      Este valor se expresa en decibelios-milivatios (dBm).
+    </div>
+    <div id="valoresPresupuesto"></div>
+    <div id="resultadoPresupuesto"></div>
+    <div id="estadoPresupuesto"></div>
+  </div>
+
+  <script src="Scripts/Mapa.js"></script>
+</body>
+</html>

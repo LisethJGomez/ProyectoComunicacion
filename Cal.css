@@ -1,0 +1,360 @@
+body {
+    background: linear-gradient(135deg, #0B2C4D 0%, #1A4B7A 50%, #3C8D99 100%);
+    background-attachment: fixed;
+    color: #ffffff;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+header {
+    background-color: rgba(18, 40, 88, 0.9);
+    padding: 0.3rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: white;
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.contenedor {
+    position: relative;
+}
+
+.btn10 {
+    font-family: "proxima-nova", sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase!important;
+    letter-spacing: 2px;
+    color: #000000;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #98d2fd;
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden!important;
+    transition: all .3s ease-in-out;
+    background: transparent!important;
+    z-index: 1001;
+    padding: 10px 20px;
+    display: inline-block;
+    margin: 10px;
+    text-decoration: none;
+}
+
+.btn10:hover {
+    border: 1px solid #071982;
+    color: #80ffd3!important;
+}
+
+.btn10::before {
+    content: '';
+    width: 0%;
+    height: 100%;
+    display: block;
+    background: #071982;
+    position: absolute;
+    transform: skewX(-20deg);   
+    left: -10%;
+    opacity: 1;
+    top: 0;
+    z-index: -12;
+    transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
+    box-shadow: 2px 0px 14px rgba(0,0,0,.6);
+}
+
+.btn10::after {
+    content: '';
+    width: 0%;
+    height: 100%;
+    display: block;
+    background: #71b8fb;
+    position: absolute;
+    transform: skewX(-20deg);   
+    left: -10%;
+    opacity: 0;
+    top: 0;
+    z-index: -15;
+    transition: all .4s cubic-bezier(.2,.95,.57,.99);
+    box-shadow: 2px 0px 14px rgba(0,0,0,.6);
+}
+
+.btn10:hover::before {
+    opacity: 1;
+    width: 116%;
+}
+
+.btn10:hover::after {
+    opacity: 1;
+    width: 120%;
+}
+
+.nav-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: white;
+    background-color: #0086af;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.nav-button:hover {
+    background-color: #24ccff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-section {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-section h2 {
+    color: #3C8D99;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #24ccff;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-group label {
+    font-weight: bold;
+    color: #0B2C4D;
+}
+
+.input-group input, 
+.input-group select {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus, 
+.input-group select:focus {
+    border-color: #3C8D99;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(60, 141, 153, 0.2);
+}
+
+.result-card {
+    background-color: rgba(224, 247, 250, 0.9);
+    border-left: 4px solid #3C8D99;
+    padding: 1.25rem;
+    margin-top: 1.5rem;
+    border-radius: 0 8px 8px 0;
+    color: #0B2C4D;
+    font-size: 1.1rem;
+}
+
+.oculto {
+    display: none;
+}
+
+.dynamic-fields {
+    display: grid;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+
+.btndanger {
+    font-family: "proxima-nova", sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase!important;
+    letter-spacing: 2px;
+    color: #000000;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #fd9898;
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden!important;
+    transition: all .3s ease-in-out;
+    background: transparent!important;
+    z-index: 1001;
+    padding: 10px 20px;
+    display: inline-block;
+    margin: 10px;
+    text-decoration: none;
+}
+
+.btndanger:hover {
+    border: 1px solid #650404;
+    color: #faeeee!important;
+}
+
+.btndanger::before {
+    content: '';
+    width: 0%;
+    height: 100%;
+    display: block;
+    background: #ba0514;
+    position: absolute;
+    transform: skewX(-20deg);   
+    left: -10%;
+    opacity: 1;
+    top: 0;
+    z-index: -12;
+    transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
+    box-shadow: 2px 0px 14px rgba(0,0,0,.6);
+}
+
+.btndanger::after {
+    content: '';
+    width: 0%;
+    height: 100%;
+    display: block;
+    background: #ffffff;
+    position: absolute;
+    transform: skewX(-20deg);   
+    left: -10%;
+    opacity: 0;
+    top: 0;
+    z-index: -15;
+    transition: all .4s cubic-bezier(.2,.95,.57,.99);
+    box-shadow: 2px 0px 14px rgba(0,0,0,.6);
+}
+
+.btndanger:hover::before {
+    opacity: 1;
+    width: 116%;
+}
+
+.btndanger::after {
+    opacity: 1;
+    width: 120%;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.chart-wrapper {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.procedure-section {
+    background: rgba(248, 249, 250, 0.95);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-left: 5px solid #3C8D99;
+    color: #000000;
+}
+
+.procedure-title {
+    color: #3C8D99;
+    margin-top: 0;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.procedure-step {
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 3px solid #24ccff;
+    color: #000000;
+}
+
+.procedure-step h3 {
+    color: #0B2C4D;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.procedure-formula {
+    background-color: rgba(224, 247, 250, 0.8);
+    padding: 1rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    margin: 0.75rem 0;
+    overflow-x: auto;
+    border: 1px solid #24ccff;
+    color: #000000;
+}
+
+.procedure-note {
+    font-style: italic;
+    color: #555;
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 6px;
+    border-left: 3px solid #f44336;
+}
+
+.explicacion {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+footer {
+background-color: #000000; 
+color: white;
+padding: 1.5rem 1rem;
+margin-top: 2rem;
+font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .main-container {
+    padding: 1rem;
+    }
+    
+    .form-grid {
+    grid-template-columns: 1fr;
+    }
+    
+    .button-group {
+    flex-direction: column;
+    }
+    
+    .card-section, .procedure-section {
+    padding: 1.25rem;
+    }
+    
+    header h1 {
+    font-size: 1.5rem;
+    }
+}
